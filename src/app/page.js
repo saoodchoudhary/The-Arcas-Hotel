@@ -633,7 +633,7 @@ export default function Home() {
               <Star className="h-4 w-4 text-foreground" /> 4.1 rating on Google
             </div>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.name}

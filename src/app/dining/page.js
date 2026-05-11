@@ -29,7 +29,7 @@ const signatureMenus = [
     description: "Traditional flavors inspired by the city’s culinary heritage.",
   },
   {
-    title: "Chinese favourites",
+    title: "Chinese favorites",
     description: "Wok-tossed specials and comforting signature bowls.",
   },
   {
