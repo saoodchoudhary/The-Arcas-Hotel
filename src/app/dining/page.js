@@ -107,7 +107,9 @@ export default function DiningPage() {
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
           <div className="rounded-3xl border border-black/10 bg-white p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted\">Dining hours</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-muted">
+              Dining hours
+            </p>
             <ul className="mt-4 space-y-3 text-sm text-muted">
               {diningSchedule.map((item) => (
                 <li key={item.label} className="flex items-start justify-between gap-4">
