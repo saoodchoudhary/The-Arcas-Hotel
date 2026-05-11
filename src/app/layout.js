@@ -109,7 +109,6 @@ export default function RootLayout({ children }) {
                   <p>+91 95656 56100</p>
                   <p>reservations@thearcashotel.com</p>
                   <p>24/7 front desk support</p>
-                  <p>Couples must be married to book</p>
                 </div>
                 <Link
                   href="/contact"

@@ -28,7 +28,6 @@ const hotelDetails = [
   "Upgraded suites with kitchenettes and lounge seating",
   "Restaurant serving local, Chinese, and Italian cuisines",
   "Lobby lounge, breakfast service, and 24/7 room service",
-  "Couples must be married to book",
 ];
 
 export default function AboutPage() {

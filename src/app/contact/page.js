@@ -4,7 +4,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 const contactHighlights = [
   "Check-in 14:00 · Check-out 12:00",
   "24/7 front desk and concierge support",
-  "Couples must be married to book",
+  "Reservation policies and ID requirements shared on request",
   "Free parking with valet assistance",
 ];
 
