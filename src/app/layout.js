@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Star } from "lucide-react";
 import "./globals.css";
 
 export const metadata = {
@@ -22,27 +22,31 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full bg-background text-foreground">
         <div className="flex min-h-screen flex-col">
-          <header className="border-b border-black/10 bg-white/80 backdrop-blur">
+          <header className="border-b border-black/10 bg-white/90 backdrop-blur">
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-4">
               <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted">
                 <div className="flex flex-wrap items-center gap-4">
                   <span className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-brand" />
+                    <MapPin className="h-4 w-4 text-foreground" />
                     Gomti Nagar, Lucknow
                   </span>
                   <span className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-brand" />
+                    <Phone className="h-4 w-4 text-foreground" />
                     +91 95656 56100
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-foreground">
+                    <Star className="h-3.5 w-3.5 text-foreground" />
+                    4.1 (214)
                   </span>
                 </div>
                 <span className="flex items-center gap-2">
-                  <Mail className="h-4 w-4 text-brand" />
+                  <Mail className="h-4 w-4 text-foreground" />
                   reservations@thearcashotel.com
                 </span>
               </div>
               <div className="flex flex-wrap items-center justify-between gap-6">
                 <Link href="/" className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-white">
                     AH
                   </div>
                   <div>
@@ -65,7 +69,7 @@ export default function RootLayout({ children }) {
                 </nav>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark"
+                  className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-black"
                 >
                   Check Availability
                 </Link>
@@ -105,10 +109,11 @@ export default function RootLayout({ children }) {
                   <p>+91 95656 56100</p>
                   <p>reservations@thearcashotel.com</p>
                   <p>24/7 front desk support</p>
+                  <p>Couples must be married to book</p>
                 </div>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-brand px-4 py-2 text-sm font-semibold text-brand transition hover:bg-brand hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full border border-foreground px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-white"
                 >
                   Plan Your Stay
                 </Link>

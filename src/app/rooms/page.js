@@ -40,6 +40,21 @@ const inclusions = [
   "24/7 room service",
 ];
 
+const experienceHighlights = [
+  {
+    title: "In-room essentials",
+    items: ["Wi-Fi connectivity", "Smart TV", "Tea & coffee maker", "Daily housekeeping"],
+  },
+  {
+    title: "Comfort upgrades",
+    items: ["Kitchenette in suites", "Lounge seating", "Premium bedding", "Work desk"],
+  },
+  {
+    title: "Service promise",
+    items: ["24/7 room service", "Laundry support", "Wake-up calls", "Concierge assistance"],
+  },
+];
+
 export default function RoomsPage() {
   return (
     <div className="bg-background">
@@ -55,36 +70,36 @@ export default function RoomsPage() {
               families, and weekend escapes. Each room includes modern amenities
               and a restful ambience.
             </p>
-            <div className="flex flex-wrap gap-4 text-sm text-muted">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2">
-                <BedDouble className="h-4 w-4 text-brand" /> Premium bedding
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2">
-                <Users className="h-4 w-4 text-brand" /> Spacious layouts
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2">
-                <Coffee className="h-4 w-4 text-brand" /> In-room refreshments
-              </span>
+              <div className="flex flex-wrap gap-4 text-sm text-muted">
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2">
+                  <BedDouble className="h-4 w-4 text-foreground" /> Premium bedding
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2">
+                  <Users className="h-4 w-4 text-foreground" /> Spacious layouts
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2">
+                  <Coffee className="h-4 w-4 text-foreground" /> In-room refreshments
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="rounded-3xl bg-surface-muted p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted">
-              Room inclusions
-            </p>
-            <ul className="mt-4 space-y-3 text-sm text-muted">
-              {inclusions.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-brand" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 rounded-2xl bg-white p-5">
-              <p className="text-sm font-semibold text-foreground">
-                Best available rates
+            <div className="rounded-3xl border border-black/10 bg-surface-muted p-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                Room inclusions
               </p>
-              <p className="mt-2 text-sm text-muted">
-                Free cancellation options are available with most bookings.
+              <ul className="mt-4 space-y-3 text-sm text-muted">
+                {inclusions.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-foreground" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 rounded-2xl border border-black/10 bg-white p-5">
+                <p className="text-sm font-semibold text-foreground">
+                  Best available rates
+                </p>
+                <p className="mt-2 text-sm text-muted">
+                  Free cancellation options are available with most bookings.
               </p>
             </div>
           </div>
@@ -95,14 +110,17 @@ export default function RoomsPage() {
         <div className="mx-auto w-full max-w-6xl px-6 py-16">
           <div className="grid gap-6 lg:grid-cols-3">
             {roomTypes.map((room) => (
-              <article key={room.name} className="rounded-3xl bg-white">
+              <article
+                key={room.name}
+                className="rounded-3xl border border-black/10 bg-white shadow-sm"
+              >
                 <div className="aspect-[4/3] overflow-hidden rounded-t-3xl bg-surface-muted">
                   <Image
                     src={room.image}
                     alt={room.name}
                     width={640}
                     height={480}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover grayscale"
                   />
                 </div>
                 <div className="space-y-4 p-6">
@@ -110,7 +128,7 @@ export default function RoomsPage() {
                     <h2 className="text-lg font-semibold text-foreground">
                       {room.name}
                     </h2>
-                    <span className="text-sm font-semibold text-brand">
+                    <span className="text-sm font-semibold text-foreground">
                       {room.price}
                     </span>
                   </div>
@@ -127,7 +145,30 @@ export default function RoomsPage() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <div className="flex flex-wrap items-center justify-between gap-6 rounded-3xl bg-white p-8 shadow-sm">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {experienceHighlights.map((highlight) => (
+            <div
+              key={highlight.title}
+              className="rounded-3xl border border-black/10 bg-white p-6"
+            >
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                {highlight.title}
+              </p>
+              <ul className="mt-4 space-y-3 text-sm text-muted">
+                {highlight.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-foreground" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-16">
+        <div className="flex flex-wrap items-center justify-between gap-6 rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.2em] text-muted">
               Need assistance?
@@ -138,7 +179,7 @@ export default function RoomsPage() {
           </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white"
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-white"
           >
             Talk to reservations <ArrowRight className="h-4 w-4" />
           </Link>

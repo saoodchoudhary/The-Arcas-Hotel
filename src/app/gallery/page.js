@@ -27,6 +27,12 @@ const galleryImages = [
   },
 ];
 
+const galleryNotes = [
+  "Black & white framing highlights the hotel’s calm interiors.",
+  "Add new images to public/images/gallery to refresh this gallery.",
+  "Curate a mix of rooms, dining, and amenities for a complete story.",
+];
+
 export default function GalleryPage() {
   return (
     <div className="bg-background">
@@ -41,11 +47,24 @@ export default function GalleryPage() {
             bring these spaces to life.
           </p>
         </div>
+        <div className="mt-8 rounded-3xl border border-black/10 bg-white p-6">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted">
+            Gallery notes
+          </p>
+          <ul className="mt-4 space-y-3 text-sm text-muted">
+            {galleryNotes.map((note) => (
+              <li key={note} className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-foreground" />
+                {note}
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {galleryImages.map((image) => (
             <div
               key={image.src}
-              className="group overflow-hidden rounded-3xl bg-surface-muted"
+              className="group overflow-hidden rounded-3xl border border-black/10 bg-surface-muted shadow-sm"
             >
               <div className="aspect-[4/3]">
                 <Image
@@ -53,7 +72,7 @@ export default function GalleryPage() {
                   alt={image.label}
                   width={640}
                   height={480}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="px-5 py-4">

@@ -23,6 +23,14 @@ const values = [
   },
 ];
 
+const hotelDetails = [
+  "Unassuming rooms with Wi-Fi, TVs, and tea and coffeemaking equipment",
+  "Upgraded suites with kitchenettes and lounge seating",
+  "Restaurant serving local, Chinese, and Italian cuisines",
+  "Lobby lounge, breakfast service, and 24/7 room service",
+  "Couples must be married to book",
+];
+
 export default function AboutPage() {
   return (
     <div className="bg-background">
@@ -38,7 +46,7 @@ export default function AboutPage() {
             hospitality. From our lobby lounge to our curated dining experience,
             each touchpoint is crafted to make you feel at home.
           </p>
-          <div className="rounded-3xl bg-white p-6 text-sm text-muted">
+          <div className="rounded-3xl border border-black/10 bg-white p-6 text-sm text-muted">
             <p className="font-semibold text-foreground">Location summary</p>
             <p className="mt-2">
               Set in a residential area with nearby shops, the hotel is moments
@@ -54,8 +62,11 @@ export default function AboutPage() {
             {values.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="rounded-3xl bg-white p-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-brand">
+                <div
+                  key={value.title}
+                  className="rounded-3xl border border-black/10 bg-white p-6"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-foreground">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h2 className="mt-4 text-lg font-semibold text-foreground">
@@ -73,6 +84,32 @@ export default function AboutPage() {
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold text-foreground font-display">
+              Hotel details at a glance.
+            </h2>
+            <p className="text-base text-muted">
+              Every space is designed for a seamless stay, from the lobby lounge
+              to the calm, well-appointed rooms. Enjoy curated dining, 24/7 room
+              service, and attentive hospitality throughout your visit.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-black/10 bg-white p-6 text-sm text-muted">
+            <p className="font-semibold text-foreground">Highlights</p>
+            <ul className="mt-3 space-y-2">
+              {hotelDetails.map((detail) => (
+                <li key={detail} className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-foreground" />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-16">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-semibold text-foreground font-display">
               Commitment to sustainability.
             </h2>
             <p className="text-base text-muted">
@@ -82,7 +119,7 @@ export default function AboutPage() {
               locally sourced culinary ingredients.
             </p>
           </div>
-          <div className="rounded-3xl bg-white p-6 text-sm text-muted">
+          <div className="rounded-3xl border border-black/10 bg-white p-6 text-sm text-muted">
             <p className="font-semibold text-foreground">Highlights</p>
             <ul className="mt-3 space-y-2">
               <li>Carbon-free energy sources</li>

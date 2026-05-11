@@ -58,6 +58,17 @@ const amenityGroups = [
   },
 ];
 
+const guestPromises = [
+  {
+    title: "Accessibility",
+    items: ["Accessible parking", "Accessible lift", "Step-free lobby access"],
+  },
+  {
+    title: "Family-friendly policies",
+    items: ["Child-friendly stays", "Smoke-free property", "No pets allowed"],
+  },
+];
+
 export default function AmenitiesPage() {
   return (
     <div className="bg-background">
@@ -76,9 +87,12 @@ export default function AmenitiesPage() {
           {amenityGroups.map((group) => {
             const Icon = group.icon;
             return (
-              <div key={group.title} className="rounded-3xl bg-white p-6">
+              <div
+                key={group.title}
+                className="rounded-3xl border border-black/10 bg-white p-6"
+              >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-brand">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-muted text-foreground">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h2 className="text-lg font-semibold text-foreground">
@@ -88,7 +102,7 @@ export default function AmenitiesPage() {
                 <ul className="mt-4 space-y-3 text-sm text-muted">
                   {group.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <CheckCircle className="mt-1 h-4 w-4 text-brand" />
+                      <CheckCircle className="mt-1 h-4 w-4 text-foreground" />
                       {item}
                     </li>
                   ))}
@@ -96,6 +110,31 @@ export default function AmenitiesPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="bg-surface-muted">
+        <div className="mx-auto w-full max-w-6xl px-6 py-16">
+          <div className="grid gap-6 md:grid-cols-2">
+            {guestPromises.map((promise) => (
+              <div
+                key={promise.title}
+                className="rounded-3xl border border-black/10 bg-white p-6"
+              >
+                <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                  {promise.title}
+                </p>
+                <ul className="mt-4 space-y-3 text-sm text-muted">
+                  {promise.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-foreground" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
