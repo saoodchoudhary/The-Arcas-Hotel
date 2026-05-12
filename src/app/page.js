@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 const WHATSAPP_PHONE_NUMBER = "919565656100";
+// Slightly above one viewport per scene keeps transitions readable while scrubbing.
 const SCROLL_DISTANCE_PER_SCENE_PERCENT = 110;
 
 const imageSet = {
@@ -109,12 +110,15 @@ const getNights = (checkIn, checkOut) => {
   return Math.max(1, diff);
 };
 
-const prettyDate = (date) =>
+const formatReservationDate = (date) =>
   new Date(`${date}T00:00:00`).toLocaleDateString("en-IN", {
     day: "numeric",
     month: "short",
     year: "numeric",
   });
+
+const pluralize = (count, singular, plural = `${singular}s`) =>
+  `${count} ${Number(count) === 1 ? singular : plural}`;
 
 const sectionWrap = "mx-auto w-full max-w-6xl px-6 py-20 md:py-28";
 
@@ -146,8 +150,8 @@ export default function Home() {
       "Hello The Arcas Hotel team,",
       "I would like to check availability.",
       "",
-      `Check-in: ${prettyDate(checkIn)}`,
-      `Check-out: ${prettyDate(checkOut)}`,
+      `Check-in: ${formatReservationDate(checkIn)}`,
+      `Check-out: ${formatReservationDate(checkOut)}`,
       `Guests: ${guests}`,
       `Nights: ${nights}`,
       "",
@@ -319,7 +323,7 @@ export default function Home() {
             </a>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/8 px-5 py-3 text-xs text-muted">
-            <span>{nights} night{Number(nights) !== 1 ? "s" : ""}, {guests} guest{Number(guests) !== 1 ? "s" : ""}</span>
+            <span>{pluralize(nights, "night")}, {pluralize(guests, "guest")}</span>
             <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Instant confirmation on WhatsApp</span>
           </div>
         </div>
@@ -331,7 +335,7 @@ export default function Home() {
             <div
               key={scene.title}
               ref={(node) => (scenesRef.current[index] = node)}
-              role="group"
+              role="region"
               aria-roledescription="slide"
               aria-label={`Scene ${index + 1} of ${imageSet.gallery.length}: ${scene.title}`}
               className="absolute inset-0"
@@ -355,7 +359,14 @@ export default function Home() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/65">{imageSet.gallery[activeScene].label}</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">{imageSet.gallery[activeScene].title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-white/75">{imageSet.gallery[activeScene].text}</p>
-            <div className="mt-6 flex gap-2">
+            <div
+              className="mt-6 flex gap-2"
+              role="progressbar"
+              aria-label="Experience scene progress"
+              aria-valuemin={1}
+              aria-valuemax={imageSet.gallery.length}
+              aria-valuenow={activeScene + 1}
+            >
               {imageSet.gallery.map((scene, index) => (
                 <div
                   key={scene.title}
