@@ -202,7 +202,7 @@ export default function Home() {
 
     return () => {
       timeline.scrollTrigger?.kill();
-      timeline.kill();
+      timeline?.kill();
     };
   }, []);
 
@@ -329,7 +329,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" ref={galleryRef} className="relative mt-16 overflow-hidden border-y border-black/5 bg-foreground text-white">
+      <section
+        id="experience"
+        ref={galleryRef}
+        aria-label="Experience Gallery"
+        className="relative mt-16 overflow-hidden border-y border-black/5 bg-foreground text-white"
+      >
         <div className="absolute inset-0">
           {imageSet.gallery.map((scene, index) => (
             <div
