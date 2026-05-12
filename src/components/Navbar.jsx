@@ -151,7 +151,7 @@ export default function Navbar() {
                 <span className="relative h-2.5 w-2.5 rounded-full border-2 border-white bg-amber-400" />
               </span>
             </div>
-            <div className="hidden sm:block">
+            <div className="block">
               <p className="text-[15px] font-bold tracking-tight text-[#0d0d0d] transition group-hover:text-black">
                 The Arcas Hotel
               </p>
