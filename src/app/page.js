@@ -20,7 +20,8 @@ import {
   Wifi,
 } from "lucide-react";
 
-const WHATSAPP_PHONE = "919565656100";
+const WHATSAPP_PHONE_NUMBER = "919565656100";
+const SCROLL_DISTANCE_PER_SCENE = 110;
 
 const imageSet = {
   hero:
@@ -152,7 +153,7 @@ export default function Home() {
       "Please share the best available options.",
     ].join("\n");
 
-    return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
   }, [checkIn, checkOut, guests, nights]);
 
   useEffect(() => {
@@ -170,7 +171,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: galleryElement,
         start: "top top",
-        end: `+=${sceneElements.length * 110}%`,
+        end: `+=${sceneElements.length * SCROLL_DISTANCE_PER_SCENE}%`,
         scrub: 1,
         pin: true,
         snap: {
@@ -327,7 +328,14 @@ export default function Home() {
       <section id="experience" ref={galleryRef} className="relative mt-16 overflow-hidden border-y border-black/5 bg-foreground text-white">
         <div className="absolute inset-0">
           {imageSet.gallery.map((scene, index) => (
-            <div key={scene.title} ref={(node) => (scenesRef.current[index] = node)} className="absolute inset-0">
+            <div
+              key={scene.title}
+              ref={(node) => (scenesRef.current[index] = node)}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Scene ${index + 1} of ${imageSet.gallery.length}: ${scene.title}`}
+              className="absolute inset-0"
+            >
               <Image src={scene.image} alt={scene.title} fill className="object-cover" />
               <div className="absolute inset-0 bg-black/55" />
             </div>
