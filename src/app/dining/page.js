@@ -264,13 +264,13 @@ export default function DiningPage() {
 
               <ul className="space-y-5">
                 {diningSchedule.map(({ label, time, note, icon: Icon }) => (
-                  <li key={label} className="flex items-center gap-4 rounded-2xl border border-black/8 bg-surface-muted/60 px-5 py-4">
+                  <li key={label} className="flex flex-col sm:flex-row items-center gap-4 rounded-2xl border border-black/8 bg-surface-muted/60 px-5 py-4">
                     <div className="inline-flex shrink-0 rounded-xl bg-background p-2.5 text-foreground shadow-sm">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-foreground">{label}</p>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">{note}</p>
+                      <p className="text-sm font-semibold text-center sm:text-left text-foreground">{label}</p>
+                      <p className="text-[11px] font-semibold  text-center sm:text-left uppercase tracking-[0.18em] text-muted">{note}</p>
                     </div>
                     <span className="shrink-0 rounded-full bg-foreground px-3 py-1 text-[12px] font-bold tabular-nums text-white">
                       {time}
