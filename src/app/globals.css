@@ -31,11 +31,23 @@ html {
 }
 
 body {
-  background: radial-gradient(circle at top, #ffffff 0%, #f5f5f5 55%, #efefef 100%);
+  background:
+    radial-gradient(circle at top, #ffffff 0%, #f5f5f5 58%, #efefef 100%),
+    linear-gradient(120deg, rgba(0, 0, 0, 0.015), transparent 40%);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
 
 * {
   box-sizing: border-box;
+}
+
+*::selection {
+  background: color-mix(in srgb, var(--foreground) 35%, white);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--foreground) 65%, white);
+  outline-offset: 2px;
 }
