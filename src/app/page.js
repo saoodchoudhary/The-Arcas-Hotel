@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 const WHATSAPP_PHONE_NUMBER = "919565656100";
-const SCROLL_DISTANCE_PER_SCENE = 110;
+const SCROLL_DISTANCE_PER_SCENE_PERCENT = 110;
 
 const imageSet = {
   hero:
@@ -171,7 +171,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: galleryElement,
         start: "top top",
-        end: `+=${sceneElements.length * SCROLL_DISTANCE_PER_SCENE}%`,
+        end: `+=${sceneElements.length * SCROLL_DISTANCE_PER_SCENE_PERCENT}%`,
         scrub: 1,
         pin: true,
         snap: {
@@ -319,7 +319,7 @@ export default function Home() {
             </a>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/8 px-5 py-3 text-xs text-muted">
-            <span>{nights} night{nights !== 1 ? "s" : ""} · {guests} guest{Number(guests) !== 1 ? "s" : ""}</span>
+            <span>{nights} night{Number(nights) !== 1 ? "s" : ""}, {guests} guest{Number(guests) !== 1 ? "s" : ""}</span>
             <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Instant confirmation on WhatsApp</span>
           </div>
         </div>
