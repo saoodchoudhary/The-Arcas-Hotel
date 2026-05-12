@@ -137,6 +137,7 @@ export default function Home() {
   const [activeScene, setActiveScene] = useState(0);
   const galleryRef = useRef(null);
   const scenesRef = useRef([]);
+  const activeSceneIndexRef = useRef(0);
 
   const nights = getNights(checkIn, checkOut);
 
@@ -163,7 +164,6 @@ export default function Home() {
     const sceneElements = scenesRef.current.filter(Boolean);
     if (!galleryElement || sceneElements.length <= 1) return;
 
-    const activeIndex = { value: 0 };
     gsap.set(sceneElements, { autoAlpha: 0, scale: 1.08 });
     gsap.set(sceneElements[0], { autoAlpha: 1, scale: 1 });
 
@@ -182,8 +182,8 @@ export default function Home() {
         },
         onUpdate: (self) => {
           const next = Math.round(self.progress * (sceneElements.length - 1));
-          if (next !== activeIndex.value) {
-            activeIndex.value = next;
+          if (next !== activeSceneIndexRef.current) {
+            activeSceneIndexRef.current = next;
             setActiveScene(next);
           }
         },
